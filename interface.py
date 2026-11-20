@@ -65,7 +65,7 @@ UI = {
             ),
             "kicker": "Enseignement", "h1": "Auxiliaire d'enseignement",
             "sous_titre": "Département de mathématiques, Université de Sherbrooke",
-            "note": "Auparavant : professeur de mathématiques, de physique et de chimie au secondaire (Togo, 2020 – 2022).",
+            "note": "Auparavant : professeur de mathématiques, de physique et de chimie au secondaire (Togo, 2019 – 2022, stage inclus).",
         },
         "cv": {
             "titre": "Curriculum vitæ",
@@ -136,7 +136,7 @@ UI = {
             ),
             "kicker": "Teaching", "h1": "Teaching assistant",
             "sous_titre": "Department of Mathematics, Université de Sherbrooke",
-            "note": "Previously: secondary school teacher of mathematics, physics and chemistry (Togo, 2020 – 2022).",
+            "note": "Previously: secondary school teacher of mathematics, physics and chemistry (Togo, 2019 – 2022, internship included).",
         },
         "cv": {
             "titre": "Curriculum vitae",

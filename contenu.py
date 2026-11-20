@@ -227,11 +227,11 @@ EXPERIENCES_ACADEMIQUES = [
         "detail_en": "Exercise sessions, student support, and grading of assignments and exams.",
     },
     {
-        "date": "2020–2022",
+        "date": "2019–2022",
         "titre": "Enseignant de mathématiques au secondaire", "titre_en": "Secondary school mathematics teacher",
-        "lieu": "Togo", "lieu_en": "Togo",
-        "detail": "Enseignement, préparation de cours et accompagnement pédagogique des élèves.",
-        "detail_en": "Teaching, course preparation and pedagogical support for students.",
+        "lieu": "Togo · stage inclus", "lieu_en": "Togo · internship included",
+        "detail": "Stage d'enseignement au Lycée BAMABODOLO, puis enseignement, préparation de cours et accompagnement pédagogique des élèves.",
+        "detail_en": "Teaching internship at Lycée BAMABODOLO, then teaching, course preparation and pedagogical support for students.",
     },
 ]
 
