@@ -245,3 +245,12 @@ COMPETENCES_ACADEMIQUES = [
     "Cryptographie et codes correcteurs", "Analyse de données, français et anglais",
 ]
 # FIN AJOUT CV2026
+
+# Auxiliariats d'enseignement, par ordre chronologique (page Enseignement et CV).
+AUXILIARIATS = [
+    {"code": "MAT298", "titre": "Calcul vectoriel", "session": "Automne 2025"},
+    {"code": "MAT401-AB", "titre": "Géométrie euclidienne et non euclidienne", "session": "Hiver 2026"},
+    {"code": "MAT901", "titre": "Notions fondamentales de calcul intégral", "session": "Été 2026"},
+    {"code": "MAT194", "titre": "Calcul différentiel et intégral", "session": "Automne 2026"},
+    {"code": "MAT199", "titre": "Algèbre linéaire appliquée à l'informatique", "session": "Automne 2026"},
+]

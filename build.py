@@ -7,7 +7,7 @@ from pathlib import Path
 from shutil import copy2, copytree, rmtree
 from datetime import date
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from contenu import (INFOS, COURS, RECHERCHES, PARCOURS, CV, EXPOSES, DISTINCTIONS, MEMOIRES, COMPETENCES_ACADEMIQUES, COURS_COMPLEMENTAIRES, EXPERIENCES_ACADEMIQUES, TRAVAIL_ANTERIEUR)
+from contenu import (INFOS, COURS, RECHERCHES, PARCOURS, CV, EXPOSES, DISTINCTIONS, MEMOIRES, COMPETENCES_ACADEMIQUES, COURS_COMPLEMENTAIRES, EXPERIENCES_ACADEMIQUES, TRAVAIL_ANTERIEUR, AUXILIARIATS)
 
 RACINE = Path(__file__).resolve().parent
 DESTINATION = RACINE / "site"
@@ -36,7 +36,7 @@ def construire_site():
         "exposes": EXPOSES, "distinctions": DISTINCTIONS,
         "memoires": MEMOIRES, "competences_academiques": COMPETENCES_ACADEMIQUES,
         "cours_complementaires": COURS_COMPLEMENTAIRES,
-        "experiences_academiques": EXPERIENCES_ACADEMIQUES, "travail_anterieur": TRAVAIL_ANTERIEUR,
+        "experiences_academiques": EXPERIENCES_ACADEMIQUES, "travail_anterieur": TRAVAIL_ANTERIEUR, "auxiliariats": AUXILIARIATS,
         "portrait_disponible": (RACINE / "ressources" / "assets" / "portrait.jpg").exists(),
         "url_site": INFOS["url_site"].rstrip("/"),
     }
