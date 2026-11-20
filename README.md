@@ -26,5 +26,5 @@ Réglage unique sur GitHub : **Settings → Pages → Build and deployment → S
 
 ## Données publiques
 
-Tout ce qui se trouve dans `ressources/` (photo, CV PDF) est téléchargeable par tous les visiteurs
-une fois le site publié.
+Tout ce qui se trouve dans `ressources/` (photo, CV général en PDF) est téléchargeable par tous les visiteurs
+une fois le site publié. Le CV général est généré par `python3 generer_cv.py` à partir de `cv_source/cv-general.html`.

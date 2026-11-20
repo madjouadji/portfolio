@@ -165,11 +165,9 @@ PROJETS = [
     },
 ]
 
-# Noms des CV conservés dans ressources/cv/ ; ils sont copiés sur le site.
+# CV téléchargeable : un seul document, le CV général (ressources/cv/cv-general.pdf, généré par generer_cv.py).
 CV = [
     {"fichier": "cv-general.pdf", "titre_fr": "CV — Curriculum vitæ complet", "titre_en": "CV — Full curriculum vitae"},
-    {"fichier": "cv-enseignement-collegial.pdf", "titre_fr": "CV — Enseignement collégial", "titre_en": "CV — College teaching"},
-    {"fichier": "cv-tutorat-mathematiques.pdf", "titre_fr": "CV — Tutorat en mathématiques", "titre_en": "CV — Mathematics tutoring"},
 ]
 
 
