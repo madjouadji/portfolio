@@ -141,7 +141,7 @@ body.compact { font-size: 15px; line-height: 1.5; }
 .compact .list-meta { font-size: .88rem; }
 .compact .list.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
 .compact .timeline li::before { top: 16px; }
-.compact .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 48px; }
+.compact .cv-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 8px 40px; }
 .compact .tags li { padding: 5px 12px; font-size: .88rem; }
 .compact .courses { list-style: none; padding: 0; margin: 0; }
 .compact .courses li { display: grid; grid-template-columns: 110px 1fr auto; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--line); }
@@ -177,3 +177,6 @@ body.compact { font-size: 15px; line-height: 1.5; }
 /* Pied de page en bas de l'écran sur toutes les pages */
 body { min-height: 100vh; display: flex; flex-direction: column; }
 main { flex: 1; }
+
+.compact .cv-grid .timeline li { padding-top: 4px; padding-bottom: 4px; }
+.compact .cv-grid .timeline li::before { top: 11px; }

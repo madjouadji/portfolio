@@ -109,6 +109,11 @@ PARCOURS = [
         "lieu_fr": "Université de Sherbrooke · Canada", "lieu_en": "Université de Sherbrooke · Canada",
     },
     {
+        "id": "iqucode", "annees_fr": "Depuis l'automne 2026", "annees_en": "Since fall 2026",
+        "titre_fr": "Microprogramme IQuCode — informatique quantique", "titre_en": "IQuCode microprogram — quantum computing",
+        "lieu_fr": "Institut quantique, Université de Sherbrooke · Canada", "lieu_en": "Institut quantique, Université de Sherbrooke · Canada",
+    },
+    {
         "id": "nantes", "annees_fr": "2024 — 2025", "annees_en": "2024 — 2025",
         "titre_fr": "Master 2 en mathématiques fondamentales", "titre_en": "Master 2 in Fundamental Mathematics",
         "lieu_fr": "Nantes Université · France", "lieu_en": "Nantes Université · France",
