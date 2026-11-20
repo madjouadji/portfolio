@@ -4,12 +4,14 @@
 {% block content %}
 <section class="page-head"><div class="wrap"><p class="kicker">Exposés</p><h1>Exposés et séminaires</h1></div></section>
 <section class="section"><div class="wrap">
-  <ul class="list tight cols2">
+  <ol class="xlist">
     {% for e in exposes %}
-    <li><span class="list-date">{{ e.date }}</span>
-      <strong>{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.titre }} ↗</a>{% else %}{{ e.titre }}{% endif %}</strong>
-      <span class="list-meta">{{ e.contexte }}</span></li>
+    <li>
+      <span class="xn">{{ loop.index }}</span>
+      <span class="xb"><strong>{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.titre }} ↗</a>{% else %}{{ e.titre }}{% endif %}</strong><span class="list-meta">{{ e.contexte }}</span></span>
+      <span class="xd">{{ e.date if e.annee == "" or e.date == e.annee else e.date }}</span>
+    </li>
     {% endfor %}
-  </ul>
+  </ol>
 </div></section>
 {% endblock %}

@@ -32,6 +32,12 @@
   .two { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
   .foot { margin-top:12px; font-size:8pt; color:var(--muted); text-align:center; }
   .mem { font-size:9pt; color:var(--muted); }
+  ol.expo { list-style:none; counter-reset:x; padding:0; margin:0; }
+  ol.expo li { counter-increment:x; position:relative; padding:0 0 5px 26px; margin:0 0 3px; break-inside:avoid; }
+  ol.expo li::before { content:counter(x); position:absolute; left:0; top:1px; width:17px; height:17px; border-radius:50%; background:var(--navy); color:#fff; font:700 8.2pt/17px Arial, sans-serif; text-align:center; }
+  ol.expo li:first-child::before { background:var(--gold); }
+  ol.expo .xt { font-weight:700; }
+  ol.expo .xv { display:block; color:var(--muted); font-size:8.8pt; }
 </style>
 </head>
 <body>
@@ -47,7 +53,7 @@
 <div class="entry">
   <div class="row"><span class="title">Doctorat en mathématiques</span><span class="date">2025 – présent</span></div>
   <p class="place">Université de Sherbrooke, Québec, Canada</p>
-  <ul><li>Direction : Maxence Mayrand. Examen général oral : 30 avril 2026.</li></ul>
+  <ul><li>Direction : Maxence Mayrand.</li></ul>
 </div>
 <div class="entry">
   <div class="row"><span class="title">Microprogramme IQuCode — informatique quantique</span><span class="date">depuis l’automne 2026</span></div>
@@ -97,12 +103,16 @@
 </div></div>
 
 <h2>Exposés</h2>
-<div class="entry"><ul style="margin-top:0">
-  <li><b>2026</b> — Construction locale de métriques hyperkählériennes au voisinage de sous-variétés lagrangiennes complexes <span class="mem">(examen général oral, Sherbrooke)</span></li>
-  <li><b>2025</b> — Théorème de Lefschetz difficile <span class="mem">(séminaire des doctorants, Sherbrooke)</span></li>
-  <li><b>2024</b> — Approximation diophantienne ; Champs de vecteurs et nombre d’Euler <span class="mem">(séminaire des étudiants, Nantes)</span></li>
-  <li><b>2023–2024</b> — Fonctions à sens unique ; Code de Hamming ; Décodage par tableau standard <span class="mem">(séminaires, Université Gaston Berger)</span></li>
-</ul></div>
+<ol class="expo">
+  <li><div class="row"><span class="xt">Construction locale de métriques hyperkählériennes au voisinage de sous-variétés lagrangiennes complexes</span><span class="date">30 avril 2026</span></div><span class="xv">Examen général oral · Département de mathématiques, Université de Sherbrooke</span></li>
+  <li><div class="row"><span class="xt">Théorème de Lefschetz difficile</span><span class="date">2025</span></div><span class="xv">Séminaire des doctorants · Université de Sherbrooke</span></li>
+  <li><div class="row"><span class="xt">Approximation diophantienne</span><span class="date">2024</span></div><span class="xv">Séminaire des étudiants · Nantes Université</span></li>
+  <li><div class="row"><span class="xt">Champs de vecteurs et nombre d’Euler</span><span class="date">2024</span></div><span class="xv">Séminaire des étudiants · Nantes Université</span></li>
+  <li><div class="row"><span class="xt">Étude des solutions du flot de Kähler–Ricci sur une variété kählérienne compacte</span></div><span class="xv">Soutenance du mémoire de master · Nantes Université</span></li>
+  <li><div class="row"><span class="xt">Code de Hamming</span><span class="date">2024</span></div><span class="xv">Séminaire des étudiants · Université Gaston Berger, Sénégal</span></li>
+  <li><div class="row"><span class="xt">Décodage par tableau standard</span><span class="date">2024</span></div><span class="xv">Séminaire de mathématiques · Université Gaston Berger, Sénégal</span></li>
+  <li><div class="row"><span class="xt">Fonctions à sens unique</span><span class="date">2023</span></div><span class="xv">Séminaire des étudiants · Université Gaston Berger, Sénégal</span></li>
+</ol>
 
 <h2>Compétences</h2>
 <dl class="grid">
