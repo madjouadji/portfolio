@@ -1,20 +1,23 @@
 name: Publier le site personnel
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# Une seule publication à la fois. On n'annule pas une publication en cours : on attend la fin.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
+
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # 1) Générer le site et l'envoyer à GitHub Pages.
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le code
@@ -27,12 +30,27 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Générer le site
         run: python build.py
+      - name: Vérifier le site généré
+        run: |
+          for f in site/index.html site/en/index.html site/cv/cv-general.pdf site/cv/cv-general-en.pdf site/sitemap.xml; do
+            test -s "$f" || { echo "Fichier manquant ou vide : $f"; exit 1; }
+          done
       - name: Préparer GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Préparer les pages
+      - name: Envoyer le site
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+  # 2) Publier. Bloc séparé : GitHub a le temps d'enregistrer le fichier envoyé par le bloc précédent
+  #    (en un seul bloc, la publication démarrait une seconde après l'envoi et ne le retrouvait pas toujours).
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Publier
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
