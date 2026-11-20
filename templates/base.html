@@ -1,54 +1,67 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ ui.html_lang }}">
 <head>
+  {%- set page = ui[page_active] %}
+  {%- set titre_complet = page.titre_complet.format(nom=nom) if page.titre_complet else page.titre ~ ' · ' ~ nom %}
+  {%- set description = page.description.format(nom=nom) %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="{% block description %}Adji Madjou, doctorant en mathématiques à l'Université de Sherbrooke : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes.{% endblock %}">
-  <meta name="author" content="{{ prenom }} {{ nom_famille }}">
-  <link rel="canonical" href="{{ url_site }}/{{ '' if page_active == 'accueil' else page_fichier }}">
-  <meta property="og:site_name" content="{{ prenom }} {{ nom_famille }}">
+  <title>{{ titre_complet }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="author" content="{{ nom }}">
+  <link rel="canonical" href="{{ url_page }}">
+  <link rel="alternate" hreflang="fr" href="{{ url_fr }}">
+  <link rel="alternate" hreflang="en" href="{{ url_en }}">
+  <link rel="alternate" hreflang="x-default" href="{{ url_fr }}">
+  <meta property="og:site_name" content="{{ nom }}">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_CA">
-  <meta property="og:title" content="{% block ogtitle %}{{ self.fulltitle() }}{% endblock %}">
-  <meta property="og:description" content="{{ self.description() }}">
-  <meta property="og:url" content="{{ url_site }}/{{ '' if page_active == 'accueil' else page_fichier }}">
+  <meta property="og:locale" content="{{ ui.og_locale }}">
+  <meta property="og:locale:alternate" content="{{ ui.og_locale_alt }}">
+  <meta property="og:title" content="{{ titre_complet }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ url_page }}">
   {% if portrait_disponible %}<meta property="og:image" content="{{ url_site }}/assets/portrait.jpg">
   <meta name="twitter:card" content="summary">{% endif %}
   <script type="application/ld+json">{{ {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": prenom ~ " " ~ nom_famille,
+    "name": nom,
     "givenName": prenom,
     "familyName": nom_famille,
-    "jobTitle": "Doctorant en mathématiques",
+    "jobTitle": ui.job,
     "affiliation": {"@type": "CollegeOrUniversity", "name": "Université de Sherbrooke"},
     "email": "mailto:" ~ email,
-    "url": url_site ~ "/",
+    "url": url_accueil,
     "image": url_site ~ "/assets/portrait.jpg",
-    "knowsAbout": ["Géométrie complexe", "Géométrie de Poisson", "Groupoïdes symplectiques holomorphes", "Géométrie hyperkählérienne"]
+    "knowsAbout": ui.knows,
+    "inLanguage": ui.html_lang
   } | tojson }}</script>
-  <title>{% block fulltitle %}{% block title %}Accueil{% endblock %} · {{ prenom }} {{ nom_famille }}{% endblock %}</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="{{ pre }}assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ pre }}styles.css">
 </head>
 <body class="{{ 'home' if page_active == 'accueil' else 'compact' }}">
-  <a class="skip" href="#contenu">Aller au contenu</a>
+  <a class="skip" href="#contenu">{{ ui.skip }}</a>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">
-        <span class="brand-name">{{ prenom }} {{ nom_famille }}</span>
-        <span class="brand-role">Mathématiques · Université de Sherbrooke</span>
+      <a class="brand" href="{{ liens.accueil }}">
+        <span class="brand-name">{{ nom }}</span>
+        <span class="brand-role">{{ ui.brand_role }}</span>
       </a>
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="{{ ui.aria_menu }}">
       <label for="menu-toggle" class="menu-button" aria-hidden="true"><span></span><span></span><span></span></label>
-      <nav class="nav" aria-label="Navigation principale">
-        {% for lien, nom, cle in [("index.html","Accueil","accueil"),("recherche.html","Recherche","recherche"),("exposes.html","Exposés","exposes"),("enseignement.html","Enseignement","enseignement"),("cv.html","CV","cv")] %}
-        <a href="{{ lien }}"{% if page_active == cle %} aria-current="page"{% endif %}>{{ nom }}</a>
+      <nav class="nav" aria-label="{{ ui.aria_nav }}">
+        {% for cle in ["accueil", "recherche", "exposes", "enseignement", "cv"] %}
+        <a href="{{ liens[cle] }}"{% if page_active == cle %} aria-current="page"{% endif %}>{{ ui.nav[cle] }}</a>
         {% endfor %}
       </nav>
+      <div class="langs" role="group" aria-label="{{ ui.aria_lang }}">
+        {% for code in ["fr", "en"] %}
+        {% if code == lang %}<span aria-current="true" lang="{{ code }}">{{ code | upper }}</span>{% else %}<a href="{{ lien_autre_langue }}" lang="{{ code }}" hreflang="{{ code }}" title="{{ ui.autre_langue.nom }}" aria-label="{{ ui.autre_langue.aria }}">{{ code | upper }}</a>{% endif %}
+        {% endfor %}
+      </div>
     </div>
   </header>
   <main id="contenu">
@@ -56,7 +69,7 @@
   </main>
   <footer class="footer">
     <div class="wrap footer-inner">
-      <span>© {{ annee }} {{ prenom }} {{ nom_famille }} · Université de Sherbrooke</span>
+      <span>© {{ annee }} {{ nom }} · Université de Sherbrooke</span>
       <a href="mailto:{{ email }}">{{ email }}</a>
     </div>
   </footer>

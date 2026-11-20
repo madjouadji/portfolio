@@ -1,6 +1,12 @@
 # VERSION COMPLÈTE — Toutes les informations qui alimentent ton site.
 # Tu peux modifier les textes entre guillemets, puis lancer : python3 build.py
 # Pas besoin de modifier le HTML, le CSS ou le JavaScript.
+#
+# SITE BILINGUE (français / anglais) : chaque texte existe en deux versions.
+#   - champs « xxx_fr » et « xxx_en »                       (ex. titre_fr, titre_en)
+#   - ou champ simple « xxx » (français) + champ « xxx_en »  (ex. titre, titre_en)
+# Un champ sans version anglaise s'affiche en français sur la page anglaise, et
+# python3 build.py affiche un avertissement pour te le rappeler.
 
 INFOS = {
     "prenom": "Adji",
@@ -172,7 +178,8 @@ PROJETS = [
 
 # CV téléchargeable : un seul document, le CV général (ressources/cv/cv-general.pdf, généré par generer_cv.py).
 CV = [
-    {"fichier": "cv-general.pdf", "titre_fr": "CV — Curriculum vitæ complet", "titre_en": "CV — Full curriculum vitae"},
+    {"fichier": "cv-general.pdf", "fichier_en": "cv-general-en.pdf",
+     "titre_fr": "CV — Curriculum vitæ complet", "titre_en": "CV — Full curriculum vitae"},
 ]
 
 
@@ -194,22 +201,47 @@ INFOS["recherche_intro_fr"] = (
     "de Poisson holomorphes par des groupoïdes symplectiques. "
     "Je m'intéresse également aux structures hyperkählériennes et à leurs constructions locales."
 )
+INFOS["recherche_intro_en"] = (
+    "My research focuses on complex geometry and on the integration of holomorphic "
+    "Poisson structures by symplectic groupoids. I am also interested in hyperkähler "
+    "structures and their local constructions."
+)
 
 # Précisions sur les intitulés de diplômes à partir du CV universitaire.
 for diplome in PARCOURS:
     if diplome["id"] == "ugb":
         diplome["titre_fr"] = "Master en mathématiques appliquées — géométrie, algèbre et applications"
+        diplome["titre_en"] = "Master's degree in Applied Mathematics — geometry, algebra and applications"
     if diplome["id"] == "kara":
         diplome["annees_fr"] = "2016 — 2019"
+        diplome["annees_en"] = "2016 — 2019"
         diplome["titre_fr"] = "Licence en mathématiques appliquées"
+        diplome["titre_en"] = "Bachelor's degree in Applied Mathematics"
 
 EXPERIENCES_ACADEMIQUES = [
-    {"date": "Depuis 2025", "titre": "Auxiliaire d'enseignement", "lieu": "Université de Sherbrooke · mathématiques", "detail": "Séances d'exercices, suivi des étudiants et correction de travaux et examens."},
-    {"date": "2020–2022", "titre": "Enseignant de mathématiques au secondaire", "lieu": "Togo", "detail": "Enseignement, préparation de cours et accompagnement pédagogique des élèves."},
+    {
+        "date": "Depuis 2025", "date_en": "Since 2025",
+        "titre": "Auxiliaire d'enseignement", "titre_en": "Teaching assistant",
+        "lieu": "Université de Sherbrooke · mathématiques", "lieu_en": "Université de Sherbrooke · mathematics",
+        "detail": "Séances d'exercices, suivi des étudiants et correction de travaux et examens.",
+        "detail_en": "Exercise sessions, student support, and grading of assignments and exams.",
+    },
+    {
+        "date": "2020–2022",
+        "titre": "Enseignant de mathématiques au secondaire", "titre_en": "Secondary school mathematics teacher",
+        "lieu": "Togo", "lieu_en": "Togo",
+        "detail": "Enseignement, préparation de cours et accompagnement pédagogique des élèves.",
+        "detail_en": "Teaching, course preparation and pedagogical support for students.",
+    },
 ]
 
 TRAVAIL_ANTERIEUR = [
-    {"titre": "Étude du paludisme chez les enfants de moins de cinq ans et chimioprévention du paludisme saisonnier", "contexte": "Rapport de stage de licence · Université de Kara, Togo"},
+    {
+        "titre": "Étude du paludisme chez les enfants de moins de cinq ans et chimioprévention du paludisme saisonnier",
+        "titre_en": "Study of malaria in children under five and seasonal malaria chemoprevention",
+        "contexte": "Rapport de stage de licence · Université de Kara, Togo",
+        "contexte_en": "Bachelor's internship report · Université de Kara, Togo",
+    },
 ]
 
 COURS_COMPLEMENTAIRES = [
@@ -220,28 +252,88 @@ COURS_COMPLEMENTAIRES = [
 
 EXPOSES = [
     {
-        "annee": "2026", "date": "30 avril 2026",
+        "annee": "2026", "date": "30 avril 2026", "date_en": "April 30, 2026",
         "titre": "Construction locale de métriques hyperkählériennes au voisinage de sous-variétés lagrangiennes complexes",
+        "titre_en": "Local construction of hyperkähler metrics near complex Lagrangian submanifolds",
         "contexte": "Examen général oral · Département de mathématiques, Université de Sherbrooke",
+        "contexte_en": "Oral general examination · Department of Mathematics, Université de Sherbrooke",
         "url": "https://www.usherbrooke.ca/mathematiques/actualites/evenements/details/58350",
     },
-    {"annee": "2025", "date": "2025", "titre": "Théorème de Lefschetz difficile", "contexte": "Séminaire des doctorants · Université de Sherbrooke", "url": ""},
-    {"annee": "2024", "date": "2024", "titre": "Approximation diophantienne", "contexte": "Séminaire des étudiants · Nantes Université", "url": ""},
-    {"annee": "2024", "date": "2024", "titre": "Champs de vecteurs et nombre d'Euler", "contexte": "Séminaire des étudiants · Nantes Université", "url": ""},
-    {"annee": "", "date": "Soutenance de master", "titre": "Étude des solutions du flot de Kähler–Ricci sur une variété kählérienne compacte", "contexte": "Mémoire de master · Nantes Université", "url": ""},
-    {"annee": "2024", "date": "2024", "titre": "Code de Hamming", "contexte": "Séminaire des étudiants · Université Gaston Berger, Sénégal", "url": ""},
-    {"annee": "2024", "date": "2024", "titre": "Décodage par tableau standard", "contexte": "Séminaire de mathématiques · Université Gaston Berger, Sénégal", "url": ""},
-    {"annee": "2023", "date": "2023", "titre": "Fonctions à sens unique", "contexte": "Séminaire des étudiants · Université Gaston Berger, Sénégal", "url": ""},
+    {
+        "annee": "2025", "date": "2025",
+        "titre": "Théorème de Lefschetz difficile", "titre_en": "Hard Lefschetz theorem",
+        "contexte": "Séminaire des doctorants · Université de Sherbrooke",
+        "contexte_en": "Doctoral students' seminar · Université de Sherbrooke", "url": "",
+    },
+    {
+        "annee": "2024", "date": "2024",
+        "titre": "Approximation diophantienne", "titre_en": "Diophantine approximation",
+        "contexte": "Séminaire des étudiants · Nantes Université",
+        "contexte_en": "Students' seminar · Nantes Université", "url": "",
+    },
+    {
+        "annee": "2024", "date": "2024",
+        "titre": "Champs de vecteurs et nombre d'Euler", "titre_en": "Vector fields and the Euler number",
+        "contexte": "Séminaire des étudiants · Nantes Université",
+        "contexte_en": "Students' seminar · Nantes Université", "url": "",
+    },
+    {
+        "annee": "", "date": "Soutenance de master", "date_en": "Master's thesis defense",
+        "titre": "Étude des solutions du flot de Kähler–Ricci sur une variété kählérienne compacte",
+        "titre_en": "Study of solutions of the Kähler–Ricci flow on a compact Kähler manifold",
+        "contexte": "Mémoire de master · Nantes Université",
+        "contexte_en": "Master's thesis · Nantes Université", "url": "",
+    },
+    {
+        "annee": "2024", "date": "2024",
+        "titre": "Code de Hamming", "titre_en": "Hamming code",
+        "contexte": "Séminaire des étudiants · Université Gaston Berger, Sénégal",
+        "contexte_en": "Students' seminar · Université Gaston Berger, Senegal", "url": "",
+    },
+    {
+        "annee": "2024", "date": "2024",
+        "titre": "Décodage par tableau standard", "titre_en": "Standard array decoding",
+        "contexte": "Séminaire de mathématiques · Université Gaston Berger, Sénégal",
+        "contexte_en": "Mathematics seminar · Université Gaston Berger, Senegal", "url": "",
+    },
+    {
+        "annee": "2023", "date": "2023",
+        "titre": "Fonctions à sens unique", "titre_en": "One-way functions",
+        "contexte": "Séminaire des étudiants · Université Gaston Berger, Sénégal",
+        "contexte_en": "Students' seminar · Université Gaston Berger, Senegal", "url": "",
+    },
 ]
 
 DISTINCTIONS = [
-    {"annee": "2024–2025", "titre": "Bourse d'excellence de master Henri Lebesgue", "detail": "Centre Henri Lebesgue · Nantes Université, France · 10 000 €", "url": "https://federation-henri-lebesgue.fr/D%C3%A9fiMath-bourses"},
-    {"annee": "2025", "titre": "Prix de major de promotion", "detail": "UFR des sciences et technologies · Université Gaston Berger, Sénégal", "url": ""},
+    {
+        "annee": "2024–2025",
+        "titre": "Bourse d'excellence de master Henri Lebesgue", "titre_en": "Henri Lebesgue Master's Excellence Scholarship",
+        "detail": "Centre Henri Lebesgue · Nantes Université, France · 10 000 €",
+        "detail_en": "Centre Henri Lebesgue · Nantes Université, France · €10,000",
+        "url": "https://federation-henri-lebesgue.fr/D%C3%A9fiMath-bourses",
+    },
+    {
+        "annee": "2025",
+        "titre": "Prix de major de promotion", "titre_en": "Top-of-class award",
+        "detail": "UFR des sciences et technologies · Université Gaston Berger, Sénégal",
+        "detail_en": "UFR of Sciences and Technologies · Université Gaston Berger, Senegal",
+        "url": "",
+    },
 ]
 
 MEMOIRES = [
-    {"titre": "Flot de Kähler–Ricci sur une variété kählérienne compacte", "contexte": "Mémoire de master · Nantes Université · 2024–2025"},
-    {"titre": "Sommes et produits de modules singuliers", "contexte": "Mémoire de master · Université Gaston Berger · 2022–2024"},
+    {
+        "titre": "Flot de Kähler–Ricci sur une variété kählérienne compacte",
+        "titre_en": "Kähler–Ricci flow on a compact Kähler manifold",
+        "contexte": "Mémoire de master · Nantes Université · 2024–2025",
+        "contexte_en": "Master's thesis · Nantes Université · 2024–2025",
+    },
+    {
+        "titre": "Sommes et produits de modules singuliers",
+        "titre_en": "Sums and products of singular moduli",
+        "contexte": "Mémoire de master · Université Gaston Berger · 2022–2024",
+        "contexte_en": "Master's thesis · Université Gaston Berger · 2022–2024",
+    },
 ]
 
 COMPETENCES_ACADEMIQUES = [
@@ -253,9 +345,14 @@ COMPETENCES_ACADEMIQUES = [
 
 # Auxiliariats d'enseignement, par ordre chronologique (page Enseignement et CV).
 AUXILIARIATS = [
-    {"code": "MAT298", "titre": "Calcul vectoriel", "session": "Automne 2025"},
-    {"code": "MAT401-AB", "titre": "Géométrie euclidienne et non euclidienne", "session": "Hiver 2026"},
-    {"code": "MAT901", "titre": "Notions fondamentales de calcul intégral", "session": "Été 2026"},
-    {"code": "MAT194", "titre": "Calcul différentiel et intégral", "session": "Automne 2026"},
-    {"code": "MAT199", "titre": "Algèbre linéaire appliquée à l'informatique", "session": "Automne 2026"},
+    {"code": "MAT298", "titre": "Calcul vectoriel", "titre_en": "Vector calculus",
+     "session": "Automne 2025", "session_en": "Fall 2025"},
+    {"code": "MAT401-AB", "titre": "Géométrie euclidienne et non euclidienne", "titre_en": "Euclidean and non-Euclidean geometry",
+     "session": "Hiver 2026", "session_en": "Winter 2026"},
+    {"code": "MAT901", "titre": "Notions fondamentales de calcul intégral", "titre_en": "Fundamental notions of integral calculus",
+     "session": "Été 2026", "session_en": "Summer 2026"},
+    {"code": "MAT194", "titre": "Calcul différentiel et intégral", "titre_en": "Differential and integral calculus",
+     "session": "Automne 2026", "session_en": "Fall 2026"},
+    {"code": "MAT199", "titre": "Algèbre linéaire appliquée à l'informatique", "titre_en": "Linear algebra for computer science",
+     "session": "Automne 2026", "session_en": "Fall 2026"},
 ]

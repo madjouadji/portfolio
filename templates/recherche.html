@@ -1,15 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Recherche{% endblock %}
-{% block description %}Recherche de Adji Madjou : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes et structures hyperkählériennes, Université de Sherbrooke.{% endblock %}
 {% block content %}
-<section class="page-head"><div class="wrap"><p class="kicker">Recherche</p><h1>Recherche</h1><p class="sub">{{ recherche_intro_fr }}</p></div></section>
+{% set t = ui.recherche %}
+<section class="page-head"><div class="wrap"><p class="kicker">{{ t.kicker }}</p><h1>{{ t.h1 }}</h1><p class="sub">{{ recherche_intro }}</p></div></section>
 <section class="section"><div class="wrap">
   <div class="cards three">
     {% for axe in recherches %}
-    <article class="card"><span class="card-symbol" aria-hidden="true">{{ axe.symbole }}</span><h3>{{ axe.titre_fr }}</h3><p>{{ axe.description_fr }}</p></article>
+    <article class="card"><span class="card-symbol" aria-hidden="true">{{ axe.symbole }}</span><h3>{{ axe.titre }}</h3><p>{{ axe.description }}</p></article>
     {% endfor %}
   </div>
-  <h2 class="section-title" style="margin-top:14px">Mémoires</h2>
+  <h2 class="section-title" style="margin-top:14px">{{ t.memoires }}</h2>
   <ul class="list tight">{% for m in memoires %}<li><strong>{{ m.titre }}</strong><span class="list-meta">{{ m.contexte }}</span></li>{% endfor %}</ul>
 </div></section>
 {% endblock %}

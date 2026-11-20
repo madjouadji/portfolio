@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Curriculum vitæ{% endblock %}
-{% block description %}Curriculum vitæ de Adji Madjou : formation (Sherbrooke, Nantes, Université Gaston Berger, Kara), expérience en enseignement, distinctions et compétences.{% endblock %}
 {% block content %}
-<section class="page-head"><div class="wrap head-row"><div><p class="kicker">Curriculum vitæ</p><h1>Parcours</h1></div>
-  {% for d in cvs %}<a class="btn btn-primary" href="cv/{{ d.fichier }}" target="_blank" rel="noopener">Télécharger le CV (PDF)</a>{% endfor %}</div></section>
+{% set t = ui.cv %}
+<section class="page-head"><div class="wrap head-row"><div><p class="kicker">{{ t.kicker }}</p><h1>{{ t.h1 }}</h1></div>
+  {% for d in cvs %}<a class="btn btn-primary" href="{{ pre }}cv/{{ d.fichier }}" target="_blank" rel="noopener">{{ t.telecharger }}</a>{% endfor %}</div></section>
 <section class="section"><div class="wrap cv-grid">
   <div>
-    <h2 class="section-title">Formation</h2>
-    <ul class="timeline">{% for p in parcours %}<li><span class="list-date">{{ p.annees_fr }}</span><strong>{{ p.titre_fr }}</strong><span class="list-meta">{{ p.lieu_fr }}</span></li>{% endfor %}</ul>
+    <h2 class="section-title">{{ t.formation }}</h2>
+    <ul class="timeline">{% for p in parcours %}<li><span class="list-date">{{ p.annees }}</span><strong>{{ p.titre }}</strong><span class="list-meta">{{ p.lieu }}</span></li>{% endfor %}</ul>
   </div>
   <div>
-    <h2 class="section-title">Expérience</h2>
+    <h2 class="section-title">{{ t.experience }}</h2>
     <ul class="timeline">{% for e in experiences_academiques %}<li><span class="list-date">{{ e.date }}</span><strong>{{ e.titre }}</strong><span class="list-meta">{{ e.lieu }}</span></li>{% endfor %}</ul>
-    <h2 class="section-title" style="margin-top:12px">Bourses et distinctions</h2>
+    <h2 class="section-title" style="margin-top:12px">{{ t.distinctions }}</h2>
     <ul class="timeline">{% for d in distinctions %}<li><span class="list-date">{{ d.annee }}</span><strong>{{ d.titre }}</strong><span class="list-meta">{{ d.detail }}</span></li>{% endfor %}</ul>
   </div>
 </div></section>

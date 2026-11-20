@@ -1,25 +1,24 @@
 {% extends "base.html" %}
-{% block fulltitle %}Adji Madjou — Doctorant en mathématiques, Université de Sherbrooke{% endblock %}
-{% block description %}Site de Adji Madjou, doctorant en mathématiques à l'Université de Sherbrooke : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes. Recherche, exposés, enseignement et CV.{% endblock %}
 {% block content %}
+{% set t = ui.accueil %}
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-photo">
-      {% if portrait_disponible %}<img src="assets/portrait.jpg" alt="Portrait de {{ prenom }} {{ nom_famille }}, doctorant en mathématiques à l'Université de Sherbrooke" width="360" height="360">{% endif %}
+      {% if portrait_disponible %}<img src="{{ pre }}assets/portrait.jpg" alt="{{ t.alt_portrait.format(nom=nom) }}" width="360" height="360">{% endif %}
     </div>
     <div class="hero-text">
-      <p class="kicker">Doctorant en mathématiques</p>
-      <h1>{{ prenom }} {{ nom_famille }}</h1>
-      <p class="lead">{{ presentation_fr }}</p>
+      <p class="kicker">{{ t.kicker }}</p>
+      <h1>{{ nom }}</h1>
+      <p class="lead">{{ presentation }}</p>
       <ul class="facts">
-        <li><span>Institution</span>Université de Sherbrooke, Québec</li>
-        <li><span>Direction</span>Maxence Mayrand</li>
-        <li><span>Domaines</span>Géométrie complexe · Géométrie de Poisson</li>
-        <li><span>Courriel</span><a href="mailto:{{ email }}">{{ email }}</a></li>
+        <li><span>{{ t.institution }}</span>{{ t.institution_valeur }}</li>
+        <li><span>{{ t.direction }}</span>{{ t.direction_valeur }}</li>
+        <li><span>{{ t.domaines }}</span>{{ t.domaines_valeur }}</li>
+        <li><span>{{ t.courriel }}</span><a href="mailto:{{ email }}">{{ email }}</a></li>
       </ul>
       <div class="actions">
-        <a class="btn btn-primary" href="recherche.html">Mes recherches</a>
-        <a class="btn" href="cv.html">Curriculum vitæ</a>
+        <a class="btn btn-primary" href="{{ liens.recherche }}">{{ t.bouton_recherche }}</a>
+        <a class="btn" href="{{ liens.cv }}">{{ t.bouton_cv }}</a>
       </div>
     </div>
   </div>
@@ -27,13 +26,13 @@
 
 <section class="section">
   <div class="wrap">
-    <h2 class="section-title">Thèmes de recherche</h2>
+    <h2 class="section-title">{{ t.themes }}</h2>
     <div class="cards three">
       {% for axe in recherches %}
       <article class="card">
         <span class="card-symbol" aria-hidden="true">{{ axe.symbole }}</span>
-        <h3>{{ axe.titre_fr }}</h3>
-        <p>{{ axe.description_fr }}</p>
+        <h3>{{ axe.titre }}</h3>
+        <p>{{ axe.description }}</p>
       </article>
       {% endfor %}
     </div>
@@ -43,22 +42,22 @@
 <section class="section alt">
   <div class="wrap two-col">
     <div>
-      <h2 class="section-title">Exposés récents</h2>
+      <h2 class="section-title">{{ t.exposes_recents }}</h2>
       <ul class="list">
         {% for e in exposes[:3] %}
         <li><span class="list-date">{{ e.date }}</span><strong>{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.titre }}</a>{% else %}{{ e.titre }}{% endif %}</strong><span class="list-meta">{{ e.contexte }}</span></li>
         {% endfor %}
       </ul>
-      <a class="more" href="exposes.html">Tous les exposés →</a>
+      <a class="more" href="{{ liens.exposes }}">{{ t.tous_exposes }}</a>
     </div>
     <div>
-      <h2 class="section-title">Distinctions</h2>
+      <h2 class="section-title">{{ t.distinctions }}</h2>
       <ul class="list">
         {% for d in distinctions %}
         <li><span class="list-date">{{ d.annee }}</span><strong>{{ d.titre }}</strong><span class="list-meta">{{ d.detail }}</span></li>
         {% endfor %}
       </ul>
-      <a class="more" href="cv.html">Parcours complet →</a>
+      <a class="more" href="{{ liens.cv }}">{{ t.parcours_complet }}</a>
     </div>
   </div>
 </section>
