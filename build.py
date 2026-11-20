@@ -46,6 +46,11 @@ def construire_site():
     copy2(RACINE / "ressources" / "styles.css", DESTINATION / "styles.css")
     copytree(RACINE / "ressources" / "assets", DESTINATION / "assets", dirs_exist_ok=True)
     copytree(RACINE / "ressources" / "cv", DESTINATION / "cv", dirs_exist_ok=True)
+    # Fichiers de validation (Google Search Console) : copiés à la racine du site, à ne jamais supprimer.
+    verification = RACINE / "ressources" / "verification"
+    if verification.is_dir():
+        for fichier in verification.iterdir():
+            if fichier.is_file(): copy2(fichier, DESTINATION / fichier.name)
     (DESTINATION / ".nojekyll").touch()
     base = INFOS["url_site"].rstrip("/")
     aujourd_hui = date.today().isoformat()
