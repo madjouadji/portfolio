@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+<section class="page-head"><div class="wrap">
+  <p class="kicker">Recherche</p><h1>Travaux et intérêts de recherche</h1>
+  <p class="lead">{{ recherche_intro_fr }}</p>
+</div></section>
+<section class="section"><div class="wrap">
+  <h2 class="section-title">Axes de recherche</h2>
+  <div class="cards three">
+    {% for axe in recherches %}
+    <article class="card"><span class="card-symbol" aria-hidden="true">{{ axe.symbole }}</span><h3>{{ axe.titre_fr }}</h3><p>{{ axe.description_fr }}</p></article>
+    {% endfor %}
+  </div>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <h2 class="section-title">Mémoires</h2>
+  <ul class="list">
+    {% for m in memoires %}<li><strong>{{ m.titre }}</strong><span class="list-meta">{{ m.contexte }}</span></li>{% endfor %}
+    {% for t in travail_anterieur %}<li><strong>{{ t.titre }}</strong><span class="list-meta">{{ t.contexte }}</span></li>{% endfor %}
+  </ul>
+</div></section>
+{% endblock %}

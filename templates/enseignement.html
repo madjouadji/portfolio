@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Enseignement{% endblock %}
+{% block content %}
+<section class="page-head"><div class="wrap">
+  <p class="kicker">Enseignement</p><h1>Enseignement</h1>
+  <p class="lead">Auxiliaire d'enseignement en mathématiques à l'Université de Sherbrooke, après plusieurs années d'enseignement au secondaire.</p>
+</div></section>
+<section class="section"><div class="wrap">
+  <h2 class="section-title">Université de Sherbrooke</h2>
+  <div class="cards two">
+    {% for c in cours %}
+    <article class="card"><span class="code">{{ c.code }}</span><h3>{{ c.titre_fr }}</h3><p>{{ c.description_fr }}</p></article>
+    {% endfor %}
+    {% for c in cours_complementaires %}
+    <article class="card"><span class="code">{{ c.code }}</span><h3>{{ c.titre }}</h3><p>{{ c.precision }}</p></article>
+    {% endfor %}
+  </div>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <h2 class="section-title">Enseignement secondaire</h2>
+  <p class="prose">{{ enseignement_secondaire_fr }}</p>
+</div></section>
+{% endblock %}

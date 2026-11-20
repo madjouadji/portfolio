@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="{{ prenom }} {{ nom_famille }} — doctorant en mathématiques à l'Université de Sherbrooke : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes.">
+  <meta property="og:title" content="{{ prenom }} {{ nom_famille }} — Mathématiques">
+  <meta property="og:type" content="website">
+  {% if portrait_disponible %}<meta property="og:image" content="assets/portrait.jpg">{% endif %}
+  <title>{% block title %}Accueil{% endblock %} · {{ prenom }} {{ nom_famille }}</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-name">{{ prenom }} {{ nom_famille }}</span>
+        <span class="brand-role">Mathématiques · Université de Sherbrooke</span>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
+      <label for="menu-toggle" class="menu-button" aria-hidden="true"><span></span><span></span><span></span></label>
+      <nav class="nav" aria-label="Navigation principale">
+        {% for lien, nom, cle in [("index.html","Accueil","accueil"),("recherche.html","Recherche","recherche"),("exposes.html","Exposés","exposes"),("enseignement.html","Enseignement","enseignement"),("cv.html","CV","cv")] %}
+        <a href="{{ lien }}"{% if page_active == cle %} aria-current="page"{% endif %}>{{ nom }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </header>
+  <main id="contenu">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <strong>{{ prenom }} {{ nom_famille }}</strong><br>
+        Département de mathématiques, Université de Sherbrooke<br>
+        Sherbrooke (Québec), Canada
+      </div>
+      <div class="footer-links">
+        <a href="mailto:{{ email }}">{{ email }}</a>
+        <span>© {{ annee }}</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

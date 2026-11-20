@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f9fc" />
+  <meta name="description" content="Adji Madjou — doctorant en mathématiques à l'Université de Sherbrooke, enseignant et chercheur en géométrie complexe et de Poisson." />
+  <meta name="author" content="{{ prenom }} {{ nom_famille }}" />
+  <meta property="og:title" content="Adji Madjou — Mathématiques · Recherche · Enseignement" />
+  <meta property="og:description" content="Portfolio académique et pédagogique d'Adji Madjou, doctorant en mathématiques à l'Université de Sherbrooke." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+  <title>{{ titre_site }}</title>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
+  <div class="site-shell" id="top">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Adji Madjou — accueil">
+          <span class="brand-mark" aria-hidden="true">a<span>.</span>m</span>
+          <span class="brand-name">{{ prenom }} <strong>{{ nom_famille }}</strong></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a class="nav-link is-active" href="#apropos" data-i18n="nav_about">À propos</a>
+          <a class="nav-link" href="#enseignement" data-i18n="nav_teach">Enseignement</a>
+          <a class="nav-link" href="#recherche" data-i18n="nav_research">Recherche</a>
+          <a class="nav-link" href="#tutorat" data-i18n="nav_tutoring">Tutorat</a>
+          <a class="nav-link" href="#projets" data-i18n="nav_projects">Projets</a>
+        </nav>
+        <div class="header-actions">
+          <button class="lang-btn" id="lang-toggle" type="button" aria-label="Switch language to English">EN <span aria-hidden="true">↗</span></button>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Activer le mode sombre" title="Mode clair / sombre">
+            <svg class="moon-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.4A9 9 0 0 1 9.6 3.5 9 9 0 1 0 20.5 14.4Z"/></svg>
+            <svg class="sun-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+          </button>
+          <a class="btn btn-small btn-dark header-contact" href="#contact"><span data-i18n="nav_contact">Contact</span><span aria-hidden="true">↗</span></a>
+          <button class="menu-toggle icon-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Ouvrir le menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile" hidden>
+        <a href="#apropos" data-i18n="nav_about">À propos</a>
+        <a href="#enseignement" data-i18n="nav_teach">Enseignement</a>
+        <a href="#recherche" data-i18n="nav_research">Recherche</a>
+        <a href="#tutorat" data-i18n="nav_tutoring">Tutorat</a>
+        <a href="#projets" data-i18n="nav_projects">Projets</a>
+        <a href="#parcours" data-i18n="nav_journey">Parcours</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow hero-eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero_eyebrow">DOCTORANT EN MATHÉMATIQUES · SHERBROOKE, QC</span></div>
+          <h1 id="hero-title" data-i18n-html="hero_title">Explorer les idées.<br/><span>Transmettre les maths.</span></h1>
+          <p class="hero-lead" data-i18n="hero_lead">{{ presentation_fr }}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#enseignement"><span data-i18n="hero_cta_primary">Découvrir mon enseignement</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+            <a class="btn btn-ghost" href="#contact"><span data-i18n="hero_cta_secondary">Entrer en contact</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-footnote"><span class="line-spark" aria-hidden="true"></span><span data-i18n="hero_note">Recherche rigoureuse. Enseignement accessible. Curiosité constante.</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Illustration abstraite de géométrie mathématique" role="img">
+          <div class="visual-grid" aria-hidden="true"></div>
+          <div class="math-fig" aria-hidden="true">
+            <svg class="math-svg" viewBox="0 0 550 515" xmlns="http://www.w3.org/2000/svg" fill="none">
+              <defs>
+                <linearGradient id="mainOrb" x1="100" y1="60" x2="445" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#89adff"/><stop offset=".5" stop-color="#6080e8"/><stop offset="1" stop-color="#89d8dc"/></linearGradient>
+                <linearGradient id="shimmer" x1="90" y1="65" x2="440" y2="460" gradientUnits="userSpaceOnUse"><stop stop-color="#3059b2"/><stop offset="1" stop-color="#66dacb"/></linearGradient>
+                <filter id="softGlow"><feGaussianBlur stdDeviation="16"/></filter>
+              </defs>
+              <ellipse cx="280" cy="255" rx="154" ry="156" fill="#498bff" fill-opacity=".12" filter="url(#softGlow)"/>
+              <circle cx="274" cy="254" r="168" stroke="url(#mainOrb)" stroke-opacity=".24" stroke-width="1.3" stroke-dasharray="3 10" />
+              <circle cx="274" cy="254" r="138" stroke="url(#mainOrb)" stroke-opacity=".45" stroke-width="1.3" />
+              <ellipse cx="274" cy="254" rx="138" ry="53" transform="rotate(-32 274 254)" stroke="url(#mainOrb)" stroke-opacity=".85" stroke-width="1.9"/>
+              <ellipse cx="274" cy="254" rx="138" ry="53" transform="rotate(33 274 254)" stroke="url(#mainOrb)" stroke-opacity=".55" stroke-width="1.65"/>
+              <ellipse cx="274" cy="254" rx="53" ry="138" transform="rotate(20 274 254)" stroke="url(#mainOrb)" stroke-opacity=".75" stroke-width="1.65"/>
+              <path d="M124 340C179 214 227 278 268 156C300 62 380 134 417 199" stroke="url(#shimmer)" stroke-width="3.4" stroke-linecap="round"/>
+              <path d="M124 340C179 214 227 278 268 156C300 62 380 134 417 199" stroke="#bed7ff" stroke-width="1" stroke-linecap="round" stroke-opacity=".6"/>
+              <path d="M130 384C209 321 303 401 422 263" stroke="#78cddb" stroke-width="1.8" stroke-opacity=".7" stroke-dasharray="5 7"/>
+              <circle cx="268" cy="156" r="6.5" fill="#fff" stroke="#678cf8" stroke-width="4"/>
+              <circle cx="417" cy="199" r="4.5" fill="#80dfd2"/>
+              <circle cx="124" cy="340" r="4.5" fill="#7b93f8"/>
+              <circle cx="397" cy="125" r="2.6" fill="#5d87f4" opacity=".6"/>
+              <circle cx="108" cy="231" r="2.5" fill="#5d87f4" opacity=".6"/>
+            </svg>
+            <span class="formula formula-top">∂f/∂z</span>
+            <span class="formula formula-bottom">∫ <span>f(x) dx</span></span>
+            <span class="formula formula-right">ℂℙ²</span>
+          </div>
+          <div class="visual-card visual-card-top" aria-hidden="true">
+            <span class="visual-card-label">RESEARCH / RECHERCHE</span>
+            <span class="visual-card-title" data-i18n="visual_research">Géométrie & structures</span>
+          </div>
+          <div class="visual-card visual-card-bottom" aria-hidden="true">
+            <span class="visual-card-icon">∑</span><span><span class="visual-card-label">TEACHING / ENSEIGNEMENT</span><span class="visual-card-title">MAT194 · MAT199</span></span>
+          </div>
+          <div class="visual-corner-tag" aria-hidden="true">AM / 2026</div>
+        </div>
+      </section>
+
+      <div class="trust-strip" aria-label="Domaines d'activité">
+        <div class="container trust-inner">
+          <span data-i18n="strip_1">GÉOMÉTRIE COMPLEXE</span><span class="trust-star" aria-hidden="true">✳</span>
+          <span data-i18n="strip_2">ENSEIGNEMENT UNIVERSITAIRE</span><span class="trust-star" aria-hidden="true">✳</span>
+          <span data-i18n="strip_3">GÉOMÉTRIE DE POISSON</span><span class="trust-star" aria-hidden="true">✳</span>
+          <span data-i18n="strip_4">MATHÉMATIQUES APPLIQUÉES</span>
+        </div>
+      </div>
+
+      <section class="section about-section container" id="apropos" aria-labelledby="about-title">
+        <div class="section-kicker"><span class="section-index">01 /</span><span data-i18n="about_kicker">À PROPOS</span></div>
+        <div class="about-layout">
+          <div class="section-heading">
+            <h2 id="about-title" data-i18n-html="about_title">Les mathématiques,<br/><em>une passion à partager.</em></h2>
+            <div class="heading-decoration" aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
+          <div class="about-body">
+            <p class="about-intro" data-i18n="about_intro">Je suis doctorant en mathématiques à l'Université de Sherbrooke. Mon travail de recherche explore la géométrie complexe et les structures de Poisson.</p>
+            <p data-i18n="about_text">Mon parcours m'a conduit du Togo au Sénégal, puis en France et au Canada. Partout, l'enseignement a conservé une place essentielle : rendre les idées précises, poser les bonnes questions et accompagner chaque étudiant vers l'autonomie.</p>
+            <div class="about-tags"><span data-i18n="about_tag1">Recherche fondamentale</span><span data-i18n="about_tag2">Pédagogie</span><span data-i18n="about_tag3">Collaboration</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section teaching-section" id="enseignement" aria-labelledby="teaching-title">
+        <div class="container">
+          <div class="section-kicker"><span class="section-index">02 /</span><span data-i18n="teach_kicker">ENSEIGNEMENT</span></div>
+          <div class="section-topline">
+            <div><h2 id="teaching-title" data-i18n-html="teach_title">Faire comprendre.<br/><em>Donner confiance.</em></h2></div>
+            <p class="section-aside" data-i18n="teach_intro">Du secondaire à l'université, j'accompagne les étudiants dans la compréhension des concepts et la résolution de problèmes.</p>
+          </div>
+          <div class="courses-grid">
+            {% for cours_item in cours %}
+            <article class="course-card{% if loop.first %} course-card-featured{% endif %} reveal">
+              <div class="course-top"><span class="course-label" data-i18n="course_uni">UNIVERSITÉ DE SHERBROOKE</span><span class="course-no">{{ '%02d'|format(loop.index) }}</span></div>
+              <div class="course-code">{{ cours_item.code }}</div>
+              <h3 data-i18n="cours_{{ cours_item.id }}_titre">{{ cours_item.titre_fr }}</h3>
+              <p data-i18n="cours_{{ cours_item.id }}_description">{{ cours_item.description_fr }}</p>
+              <div class="course-meta"><span data-i18n="course_role">Auxiliaire d'enseignement</span><span aria-hidden="true">↗</span></div>
+            </article>
+            {% endfor %}
+            <article class="course-card course-card-wide reveal">
+              <div class="course-top"><span class="course-label" data-i18n="course_secondary">EXPÉRIENCE AU SECONDAIRE · TOGO</span><span class="course-no">03</span></div>
+              <div class="secondary-card-content">
+                <div><h3 data-i18n="school_title">Mathématiques, physique & chimie</h3><p data-i18n="school_desc">{{ enseignement_secondaire_fr }}</p></div>
+                <span class="experience-pill" data-i18n="school_pill">Préparation de cours · Évaluation · Suivi</span>
+              </div>
+            </article>
+          </div>
+          <div class="teaching-footer"><span class="icon-square" aria-hidden="true">↗</span><p data-i18n="teaching_footer">J'accorde une place centrale à la clarté des explications, à la pratique régulière et au raisonnement autonome.</p></div>
+        </div>
+      </section>
+
+      <section class="section research-section container" id="recherche" aria-labelledby="research-title">
+        <div class="section-kicker"><span class="section-index">03 /</span><span data-i18n="research_kicker">RECHERCHE</span></div>
+        <div class="research-layout">
+          <div>
+            <h2 id="research-title" data-i18n-html="research_title">Des questions<br/><em>au cœur de la géométrie.</em></h2>
+            <p class="research-lead" data-i18n="research_lead">{{ recherche_intro_fr }}</p>
+            <a class="text-link" href="mailto:{{ email }}?subject=Échange%20scientifique" data-i18n-html="research_link">Échanger sur mes recherches <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="research-list">
+            {% for theme in recherches %}
+            <article class="research-item reveal"><span class="research-count">{{ '%02d'|format(loop.index) }}</span><div><h3 data-i18n="recherche_{{ theme.id }}_titre">{{ theme.titre_fr }}</h3><p data-i18n="recherche_{{ theme.id }}_description">{{ theme.description_fr }}</p></div><span class="research-symbol" aria-hidden="true">{{ theme.symbole }}</span></article>
+            {% endfor %}
+            <p class="research-note" data-i18n="research_note">Ces thèmes reflètent mes travaux actuels de recherche doctorale.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section tutoring-section" id="tutorat" aria-labelledby="tutoring-title">
+        <div class="container">
+          <div class="section-kicker"><span class="section-index">04 /</span><span data-i18n="tutoring_kicker">TUTORAT & ACCOMPAGNEMENT</span></div>
+          <div class="section-topline">
+            <h2 id="tutoring-title" data-i18n-html="tutoring_title">Progresser en maths.<br/><em>À chaque étape.</em></h2>
+            <p class="section-aside" data-i18n="tutoring_intro">Des compétences développées au secondaire et à l'université, pour aider à comprendre et à résoudre les problèmes.</p>
+          </div>
+          <div class="tutor-grid">
+          {% for discipline in tutorat %}
+            <article class="tutor-card reveal">
+              <span class="tutor-symbol" aria-hidden="true">{{ discipline.symbole }}</span>
+              <span class="tutor-level" data-i18n="tutor_{{ discipline.id }}_niveau">{{ discipline.niveau_fr }}</span>
+              <h3 data-i18n="tutor_{{ discipline.id }}_titre">{{ discipline.titre_fr }}</h3>
+              <p data-i18n="tutor_{{ discipline.id }}_description">{{ discipline.description_fr }}</p>
+            </article>
+          {% endfor %}
+          </div>
+          <p class="tutor-note" data-i18n="tutor_note">Pour une collaboration pédagogique ou une demande de tutorat, contactez-moi afin d'échanger sur les besoins et les disponibilités.</p>
+        </div>
+      </section>
+
+      <section class="section projects-section container" id="projets" aria-labelledby="projects-title">
+        <div class="section-kicker"><span class="section-index">05 /</span><span data-i18n="projects_kicker">PROJETS PYTHON</span></div>
+        <div class="section-topline">
+          <h2 id="projects-title" data-i18n-html="projects_title">Apprendre en<br/><em>construisant.</em></h2>
+          <p class="section-aside" data-i18n="projects_intro">Des projets personnels qui relient la programmation, les mathématiques et l'informatique quantique.</p>
+        </div>
+        <div class="project-grid">
+          {% for projet in projets %}
+          <article class="project-card reveal">
+            <div class="project-number">{{ projet.numero }} <span aria-hidden="true">↗</span></div>
+            <span class="project-stack">{{ projet.technos }}</span>
+            <h3 data-i18n="projet_{{ projet.id }}_titre">{{ projet.titre_fr }}</h3>
+            <p data-i18n="projet_{{ projet.id }}_description">{{ projet.description_fr }}</p>
+            <div class="project-status" data-i18n="projet_{{ projet.id }}_statut">{{ projet.statut_fr }}</div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="section journey-section" id="parcours" aria-labelledby="journey-title">
+        <div class="container">
+          <div class="section-kicker"><span class="section-index">06 /</span><span data-i18n="journey_kicker">PARCOURS</span></div>
+          <div class="section-topline journey-heading"><h2 id="journey-title" data-i18n-html="journey_title">Un parcours,<br/><em>plusieurs horizons.</em></h2><p class="section-aside" data-i18n="journey_intro">Quatre étapes, un même fil conducteur : approfondir les mathématiques et les transmettre.</p></div>
+          <div class="timeline">
+            {% for diplome in parcours %}
+            <div class="timeline-item reveal"><div class="timeline-year" data-i18n="parcours_{{ diplome.id }}_annees">{{ diplome.annees_fr }}</div><div class="timeline-dot"></div><div class="timeline-details"><h3 data-i18n="parcours_{{ diplome.id }}_titre">{{ diplome.titre_fr }}</h3><p data-i18n="parcours_{{ diplome.id }}_lieu">{{ diplome.lieu_fr }}</p></div><span class="timeline-icon" aria-hidden="true">↗</span></div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section cv-section" id="cv" aria-labelledby="cv-title">
+        <div class="container cv-layout">
+          <div>
+            <div class="section-kicker"><span class="section-index">07 /</span><span data-i18n="cv_kicker">CURRICULUM VITÆ</span></div>
+            <h2 id="cv-title" data-i18n-html="cv_title">Mon parcours<br/><em>en un document.</em></h2>
+            <p class="cv-description" data-i18n="cv_description">Téléchargez le CV correspondant à votre besoin : enseignement au cégep ou tutorat en mathématiques.</p>
+          </div>
+          <div class="cv-cards">
+            {% for doc in cvs %}
+            <a class="cv-download" href="cv/{{ doc.fichier }}" download>
+              <span class="cv-icon" aria-hidden="true">↓</span><span data-i18n="cv_{{ loop.index }}_title">{{ doc.titre_fr }}</span><span aria-hidden="true">PDF ↗</span>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section container" id="contact" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div class="contact-glow" aria-hidden="true"></div>
+          <div class="contact-content">
+            <div class="section-kicker contact-kicker"><span class="section-index">08 /</span><span data-i18n="contact_kicker">CONTACT</span></div>
+            <h2 id="contact-title" data-i18n-html="contact_title">Travaillons sur<br/><em>de nouvelles idées.</em></h2>
+            <p data-i18n="contact_text">Pour un échange scientifique, une collaboration pédagogique ou une possibilité d'enseignement des mathématiques à temps partiel, écrivez-moi.</p>
+            <div class="contact-actions"><a class="btn btn-white" href="mailto:{{ email }}?subject=Prise%20de%20contact%20-%20Site%20personnel"><span data-i18n="contact_email">M'envoyer un courriel</span><span aria-hidden="true">↗</span></a><button class="btn btn-outline-white" type="button" id="copy-email"><span data-i18n="contact_copy">Copier mon adresse</span><span aria-hidden="true">⧉</span></button></div>
+            <p class="contact-email-visible">{{ email }}</p>
+          </div>
+          <div class="contact-formula" aria-hidden="true">∫<span>∞</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">a<span>.</span>m</span><span class="brand-name">{{ prenom }} <strong>{{ nom_famille }}</strong></span></a>
+        <span class="footer-note">© <span id="year">{{ annee }}</span> {{ prenom }} {{ nom_famille }} · <span data-i18n="footer_note">Site personnel · Sherbrooke, Québec</span></span>
+        <a href="#top" class="footer-back"><span data-i18n="back_to_top">Retour en haut</span> ↑</a>
+      </div>
+    </footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

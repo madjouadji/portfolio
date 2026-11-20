@@ -1,0 +1,16 @@
+# Environnement et éditeur
+__pycache__/
+*.py[cod]
+.venv/
+.idea/
+.DS_Store
+
+# Le site est régénéré par GitHub Actions (python build.py) : ne pas le versionner
+site/
+
+# Sauvegardes locales et scripts de mise à jour ponctuels (ils écraseraient les gabarits)
+_sauvegarde*/
+sauvegarde*/
+appliquer_nouveau_design.py
+corriger_mon_site*.py
+mettre_a_jour_mon_site_cv_2026.py
