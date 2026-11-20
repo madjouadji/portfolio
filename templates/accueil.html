@@ -1,10 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Accueil{% endblock %}
+{% block fulltitle %}Adji Madjou — Doctorant en mathématiques, Université de Sherbrooke{% endblock %}
+{% block description %}Site de Adji Madjou, doctorant en mathématiques à l'Université de Sherbrooke : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes. Recherche, exposés, enseignement et CV.{% endblock %}
 {% block content %}
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-photo">
-      {% if portrait_disponible %}<img src="assets/portrait.jpg" alt="Portrait de {{ prenom }} {{ nom_famille }}" width="360" height="360">{% endif %}
+      {% if portrait_disponible %}<img src="assets/portrait.jpg" alt="Portrait de {{ prenom }} {{ nom_famille }}, doctorant en mathématiques à l'Université de Sherbrooke" width="360" height="360">{% endif %}
     </div>
     <div class="hero-text">
       <p class="kicker">Doctorant en mathématiques</p>

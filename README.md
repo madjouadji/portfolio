@@ -1,4 +1,4 @@
-# Site personnel — Adji MADJOU
+# Site personnel — Adji Madjou
 
 Site statique généré en Python (Jinja2) : cinq pages — accueil, recherche, exposés, enseignement, CV.
 

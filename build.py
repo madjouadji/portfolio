@@ -38,14 +38,26 @@ def construire_site():
         "cours_complementaires": COURS_COMPLEMENTAIRES,
         "experiences_academiques": EXPERIENCES_ACADEMIQUES, "travail_anterieur": TRAVAIL_ANTERIEUR,
         "portrait_disponible": (RACINE / "ressources" / "assets" / "portrait.jpg").exists(),
+        "url_site": INFOS["url_site"].rstrip("/"),
     }
     for nom, modele, actif in PAGES:
-        html = env.get_template(modele).render(**donnees, page_active=actif)
+        html = env.get_template(modele).render(**donnees, page_active=actif, page_fichier=nom)
         (DESTINATION / nom).write_text(html, encoding="utf-8")
     copy2(RACINE / "ressources" / "styles.css", DESTINATION / "styles.css")
     copytree(RACINE / "ressources" / "assets", DESTINATION / "assets", dirs_exist_ok=True)
     copytree(RACINE / "ressources" / "cv", DESTINATION / "cv", dirs_exist_ok=True)
     (DESTINATION / ".nojekyll").touch()
+    base = INFOS["url_site"].rstrip("/")
+    aujourd_hui = date.today().isoformat()
+    entrees = "\n".join(
+        f"  <url><loc>{base}/{'' if nom == 'index.html' else nom}</loc><lastmod>{aujourd_hui}</lastmod>"
+        f"<priority>{'1.0' if nom == 'index.html' else '0.7'}</priority></url>"
+        for nom, _, _ in PAGES
+    )
+    (DESTINATION / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + entrees + "\n</urlset>\n", encoding="utf-8")
+    (DESTINATION / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
     print("✓ Site personnel créé avec 5 pages indépendantes :")
     for nom, _, _ in PAGES:
         print("  - site/" + nom)

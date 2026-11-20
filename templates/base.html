@@ -3,11 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="{{ prenom }} {{ nom_famille }} — doctorant en mathématiques à l'Université de Sherbrooke : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes.">
-  <meta property="og:title" content="{{ prenom }} {{ nom_famille }} — Mathématiques">
+  <meta name="description" content="{% block description %}Adji Madjou, doctorant en mathématiques à l'Université de Sherbrooke : géométrie complexe, géométrie de Poisson, groupoïdes symplectiques holomorphes.{% endblock %}">
+  <meta name="author" content="{{ prenom }} {{ nom_famille }}">
+  <link rel="canonical" href="{{ url_site }}/{{ '' if page_active == 'accueil' else page_fichier }}">
+  <meta property="og:site_name" content="{{ prenom }} {{ nom_famille }}">
   <meta property="og:type" content="website">
-  {% if portrait_disponible %}<meta property="og:image" content="assets/portrait.jpg">{% endif %}
-  <title>{% block title %}Accueil{% endblock %} · {{ prenom }} {{ nom_famille }}</title>
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:title" content="{% block ogtitle %}{{ self.fulltitle() }}{% endblock %}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:url" content="{{ url_site }}/{{ '' if page_active == 'accueil' else page_fichier }}">
+  {% if portrait_disponible %}<meta property="og:image" content="{{ url_site }}/assets/portrait.jpg">
+  <meta name="twitter:card" content="summary">{% endif %}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": prenom ~ " " ~ nom_famille,
+    "givenName": prenom,
+    "familyName": nom_famille,
+    "jobTitle": "Doctorant en mathématiques",
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "Université de Sherbrooke"},
+    "email": "mailto:" ~ email,
+    "url": url_site ~ "/",
+    "image": url_site ~ "/assets/portrait.jpg",
+    "knowsAbout": ["Géométrie complexe", "Géométrie de Poisson", "Groupoïdes symplectiques holomorphes", "Géométrie hyperkählérienne"]
+  } | tojson }}</script>
+  <title>{% block fulltitle %}{% block title %}Accueil{% endblock %} · {{ prenom }} {{ nom_famille }}{% endblock %}</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

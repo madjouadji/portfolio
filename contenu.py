@@ -4,9 +4,12 @@
 
 INFOS = {
     "prenom": "Adji",
-    "nom_famille": "MADJOU",
+    "nom_famille": "Madjou",
     "email": "Adji.Madjou@USherbrooke.ca",
-    "titre_site": "Adji MADJOU | Mathématiques, recherche et enseignement",
+    "titre_site": "Adji Madjou | Mathématiques, recherche et enseignement",
+    # Adresse publique du site (sert au sitemap, aux liens canoniques et aux aperçus de partage).
+    # À modifier si le dépôt GitHub change de nom, par exemple "https://madjouadji.github.io".
+    "url_site": "https://madjouadji.github.io/portfolio",
     "presentation_fr": (
         "Doctorant en mathématiques à l'Université de Sherbrooke, je mène des recherches "
         "en géométrie complexe et en géométrie de Poisson. J'accompagne également "
