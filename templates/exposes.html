@@ -2,18 +2,13 @@
 {% block title %}Exposés{% endblock %}
 {% block description %}Exposés et séminaires de Adji Madjou : géométrie hyperkählérienne, théorème de Lefschetz difficile, approximation diophantienne, codes correcteurs.{% endblock %}
 {% block content %}
-<section class="page-head"><div class="wrap">
-  <p class="kicker">Exposés</p><h1>Exposés et séminaires</h1>
-  <p class="lead">Présentations données en séminaire, en examen doctoral et en soutenance.</p>
-</div></section>
+<section class="page-head"><div class="wrap"><p class="kicker">Exposés</p><h1>Exposés et séminaires</h1></div></section>
 <section class="section"><div class="wrap">
-  <ul class="list list-large">
+  <ul class="list tight cols2">
     {% for e in exposes %}
     <li><span class="list-date">{{ e.date }}</span>
-      <strong>{{ e.titre }}</strong>
-      <span class="list-meta">{{ e.contexte }}</span>
-      {% if e.url %}<a class="link" href="{{ e.url }}" target="_blank" rel="noopener">Annonce officielle ↗</a>{% endif %}
-    </li>
+      <strong>{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.titre }} ↗</a>{% else %}{{ e.titre }}{% endif %}</strong>
+      <span class="list-meta">{{ e.contexte }}</span></li>
     {% endfor %}
   </ul>
 </div></section>

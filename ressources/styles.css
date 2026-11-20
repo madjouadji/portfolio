@@ -107,3 +107,70 @@ h1, h2, h3 { font-family: var(--serif); color: var(--text); line-height: 1.2; ma
   .footer-links { align-items: flex-start; }
 }
 @media print { .topbar, .footer, .actions { display: none; } body { background: #fff; } }
+
+/* === Version compacte : chaque page tient sur un écran d'ordinateur === */
+body { font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1040px; }
+.topbar-inner { min-height: 56px; }
+.brand-name { font-size: 1.2rem; }
+.brand-role { font-size: .74rem; }
+.nav a { padding: 6px 12px; font-size: .9rem; }
+.hero { padding: 30px 0 34px; }
+.hero-grid { grid-template-columns: 190px minmax(0, 1fr); gap: 40px; }
+.hero-photo img { border-width: 4px; box-shadow: 0 8px 24px rgba(31,58,99,.14); }
+.hero h1 { font-size: 2.4rem; margin-bottom: .2em; }
+.lead { font-size: 1.02rem; margin: .3em 0 .9em; }
+.kicker { margin-bottom: 4px; }
+.mail { margin: .9em 0 .8em; }
+.hero .tags { margin: 0; }
+.actions { margin-top: 0; gap: 10px; }
+.btn { padding: 8px 18px; font-size: .9rem; }
+.section { padding: 22px 0 28px; }
+.section-title { font-size: 1.15rem; margin-bottom: 12px; padding-bottom: 6px; }
+.page-head { padding: 22px 0 14px; }
+.page-head h1 { font-size: 1.8rem; margin-bottom: .15em; }
+.page-head .sub { margin: .2em 0 0; color: var(--muted); max-width: 80ch; }
+.head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.cards { gap: 12px; }
+.card { padding: 14px 16px; }
+.card h3 { font-size: 1.02rem; margin-bottom: .25em; }
+.card p { font-size: .88rem; }
+.card-symbol { width: 32px; height: 32px; font-size: 1rem; margin-bottom: 8px; border-radius: 8px; }
+.list li, .timeline li { padding: 8px 0; gap: 1px; }
+.list strong, .timeline strong { font-size: 1rem; }
+.list-meta { font-size: .88rem; }
+.list.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+.timeline li::before { top: 16px; }
+.cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 48px; }
+.tags li { padding: 5px 12px; font-size: .88rem; }
+.courses { list-style: none; padding: 0; margin: 0; }
+.courses li { display: grid; grid-template-columns: 110px 1fr auto; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.courses .code { font-size: .8rem; font-weight: 600; letter-spacing: .08em; color: var(--gold); }
+.courses .ctitle { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; }
+.courses .term { color: var(--accent); font-weight: 600; font-size: .92rem; white-space: nowrap; }
+.note { margin: 14px 0 0; color: var(--muted); font-size: .92rem; }
+.footer { padding: 12px 0; font-size: .82rem; }
+.footer-inner { align-items: center; }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; text-align: center; }
+  .hero-photo img { max-width: 150px; margin: 0 auto; }
+  .hero .tags, .actions { justify-content: center; }
+  .list.cols2, .cv-grid { grid-template-columns: minmax(0, 1fr); }
+  .courses li { grid-template-columns: 1fr auto; }
+  .courses .code { grid-column: 1 / -1; }
+  .head-row { align-items: flex-start; }
+}
+
+/* ajustement fin pour les petits écrans de portable (hauteur ~650 px) */
+.topbar-inner { min-height: 52px; }
+.page-head { padding: 16px 0 8px; }
+.section { padding: 14px 0 18px; }
+.section-title { margin-bottom: 8px; padding-bottom: 5px; }
+.list li, .timeline li { padding: 6px 0; }
+.timeline li::before { top: 13px; }
+.card { padding: 12px 14px; }
+.footer { padding: 9px 0; }
+.courses li { padding: 10px 0; }
+
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }

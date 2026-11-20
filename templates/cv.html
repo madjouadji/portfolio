@@ -2,20 +2,18 @@
 {% block title %}Curriculum vitæ{% endblock %}
 {% block description %}Curriculum vitæ de Adji Madjou : formation (Sherbrooke, Nantes, Université Gaston Berger, Kara), expérience en enseignement, distinctions et compétences.{% endblock %}
 {% block content %}
-<section class="page-head"><div class="wrap">
-  <p class="kicker">Curriculum vitæ</p><h1>Parcours</h1>
-  {% if cvs %}<div class="actions">{% for d in cvs %}<a class="btn btn-primary" href="cv/{{ d.fichier }}" target="_blank" rel="noopener">{{ d.titre_fr }} (PDF)</a>{% endfor %}</div>{% endif %}
-</div></section>
-<section class="section"><div class="wrap cv">
-  <div class="cv-block"><h2 class="section-title">Formation</h2>
-    <ul class="timeline">{% for p in parcours %}<li><span class="list-date">{{ p.annees_fr }}</span><strong>{{ p.titre_fr }}</strong><span class="list-meta">{{ p.lieu_fr }}</span></li>{% endfor %}</ul></div>
-  <div class="cv-block"><h2 class="section-title">Expérience</h2>
-    <ul class="timeline">{% for e in experiences_academiques %}<li><span class="list-date">{{ e.date }}</span><strong>{{ e.titre }}</strong><span class="list-meta">{{ e.lieu }} — {{ e.detail }}</span></li>{% endfor %}</ul></div>
-  <div class="cv-block"><h2 class="section-title">Bourses et distinctions</h2>
-    <ul class="timeline">{% for d in distinctions %}<li><span class="list-date">{{ d.annee }}</span><strong>{{ d.titre }}</strong><span class="list-meta">{{ d.detail }}</span>{% if d.url %}<a class="link" href="{{ d.url }}" target="_blank" rel="noopener">Source ↗</a>{% endif %}</li>{% endfor %}</ul></div>
-  <div class="cv-block"><h2 class="section-title">Mémoires</h2>
-    <ul class="timeline">{% for m in memoires %}<li><strong>{{ m.titre }}</strong><span class="list-meta">{{ m.contexte }}</span></li>{% endfor %}</ul></div>
-  <div class="cv-block"><h2 class="section-title">Compétences</h2>
-    <ul class="tags">{% for c in competences_academiques %}<li>{{ c }}</li>{% endfor %}</ul></div>
+<section class="page-head"><div class="wrap head-row"><div><p class="kicker">Curriculum vitæ</p><h1>Parcours</h1></div>
+  {% for d in cvs %}<a class="btn btn-primary" href="cv/{{ d.fichier }}" target="_blank" rel="noopener">Télécharger le CV (PDF)</a>{% endfor %}</div></section>
+<section class="section"><div class="wrap cv-grid">
+  <div>
+    <h2 class="section-title">Formation</h2>
+    <ul class="timeline">{% for p in parcours %}<li><span class="list-date">{{ p.annees_fr }}</span><strong>{{ p.titre_fr }}</strong><span class="list-meta">{{ p.lieu_fr }}</span></li>{% endfor %}</ul>
+  </div>
+  <div>
+    <h2 class="section-title">Expérience</h2>
+    <ul class="timeline">{% for e in experiences_academiques %}<li><span class="list-date">{{ e.date }}</span><strong>{{ e.titre }}</strong><span class="list-meta">{{ e.lieu }}</span></li>{% endfor %}</ul>
+    <h2 class="section-title" style="margin-top:12px">Bourses et distinctions</h2>
+    <ul class="timeline">{% for d in distinctions %}<li><span class="list-date">{{ d.annee }}</span><strong>{{ d.titre }}</strong><span class="list-meta">{{ d.detail }}</span></li>{% endfor %}</ul>
+  </div>
 </div></section>
 {% endblock %}

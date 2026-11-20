@@ -56,15 +56,8 @@
   </main>
   <footer class="footer">
     <div class="wrap footer-inner">
-      <div>
-        <strong>{{ prenom }} {{ nom_famille }}</strong><br>
-        Département de mathématiques, Université de Sherbrooke<br>
-        Sherbrooke (Québec), Canada
-      </div>
-      <div class="footer-links">
-        <a href="mailto:{{ email }}">{{ email }}</a>
-        <span>© {{ annee }}</span>
-      </div>
+      <span>© {{ annee }} {{ prenom }} {{ nom_famille }} · Université de Sherbrooke</span>
+      <a href="mailto:{{ email }}">{{ email }}</a>
     </div>
   </footer>
 </body>

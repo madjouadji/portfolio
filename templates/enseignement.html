@@ -2,20 +2,13 @@
 {% block title %}Enseignement{% endblock %}
 {% block description %}Enseignement de Adji Madjou : auxiliaire d'enseignement en mathématiques à l'Université de Sherbrooke (MAT194, MAT199, MAT298) et professeur au secondaire.{% endblock %}
 {% block content %}
-<section class="page-head"><div class="wrap">
-  <p class="kicker">Enseignement</p><h1>Enseignement</h1>
-  <p class="lead">Auxiliaire d'enseignement en mathématiques à l'Université de Sherbrooke, après plusieurs années d'enseignement au secondaire.</p>
-</div></section>
+<section class="page-head"><div class="wrap"><p class="kicker">Enseignement</p><h1>Auxiliaire d'enseignement</h1><p class="sub">Département de mathématiques, Université de Sherbrooke</p></div></section>
 <section class="section"><div class="wrap">
-  <h2 class="section-title">Université de Sherbrooke</h2>
-  <div class="cards three">
+  <ul class="courses">
     {% for c in auxiliariats %}
-    <article class="card"><span class="code">{{ c.code }}</span><h3>{{ c.titre }}</h3><p>Auxiliaire d'enseignement<br><strong class="term">{{ c.session }}</strong></p></article>
+    <li><span class="code">{{ c.code }}</span><span class="ctitle">{{ c.titre }}</span><span class="term">{{ c.session }}</span></li>
     {% endfor %}
-  </div>
-</div></section>
-<section class="section alt"><div class="wrap">
-  <h2 class="section-title">Enseignement secondaire</h2>
-  <p class="prose">{{ enseignement_secondaire_fr }}</p>
+  </ul>
+  <p class="note">Auparavant : professeur de mathématiques, de physique et de chimie au secondaire (Togo, 2020 – 2022).</p>
 </div></section>
 {% endblock %}
