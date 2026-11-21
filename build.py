@@ -7,6 +7,7 @@ Le bouton FR | EN du menu passe d'une page à son équivalent dans l'autre langu
 Lancer : python3 lancer_site.py
 """
 from datetime import date
+from hashlib import sha1
 from pathlib import Path
 from shutil import copy2, copytree, rmtree
 
@@ -90,6 +91,10 @@ def construire_site():
         "auxiliariats": C.AUXILIARIATS,
     }
     portrait = (RACINE / "ressources" / "assets" / "portrait.jpg").exists()
+    # Numéro de version de styles.css et site.js : change à chaque modification,
+    # pour que les navigateurs ne gardent pas l'ancienne version en mémoire.
+    version = sha1((RACINE / "ressources" / "styles.css").read_bytes()
+                   + (RACINE / "ressources" / "js" / "site.js").read_bytes()).hexdigest()[:10]
     manquants_cv = []
 
     for lang in LANGUES:
@@ -108,7 +113,7 @@ def construire_site():
         for cle, fr, en, modele in PAGES:
             html = env.get_template(modele).render(
                 **donnees, cvs=cvs, nom=nom, annee=date.today().year, portrait_disponible=portrait,
-                ui=UI[lang], lang=lang, pre=prefixe, liens=liens, page_active=cle,
+                ui=UI[lang], lang=lang, pre=prefixe, version=version, liens=liens, page_active=cle,
                 lien_autre_langue=("en/" + en) if lang == "fr" else ("../" + fr),
                 url_page=url_publique(base, lang, cle),
                 url_fr=url_publique(base, "fr", cle), url_en=url_publique(base, "en", cle),
