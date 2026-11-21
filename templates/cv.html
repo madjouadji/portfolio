@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 {% set t = ui.cv %}
-<section class="page-head"><div class="wrap head-row"><div><p class="kicker">{{ t.kicker }}</p><h1>{{ t.h1 }}</h1></div>
-  {% for d in cvs %}<a class="btn btn-primary" href="{{ pre }}cv/{{ d.fichier }}" target="_blank" rel="noopener">{{ t.telecharger }}</a>{% endfor %}</div></section>
-<section class="section"><div class="wrap cv-grid">
-  <div>
-    <h2 class="section-title">{{ t.formation }}</h2>
-    <ul class="timeline">{% for p in parcours %}<li><span class="list-date">{{ p.annees }}</span><strong>{{ p.titre }}</strong><span class="list-meta">{{ p.lieu }}</span></li>{% endfor %}</ul>
-  </div>
-  <div>
-    <h2 class="section-title">{{ t.experience }}</h2>
-    <ul class="timeline">{% for e in experiences_academiques %}<li><span class="list-date">{{ e.date }}</span><strong>{{ e.titre }}</strong><span class="list-meta">{{ e.lieu }}</span></li>{% endfor %}</ul>
-    <h2 class="section-title" style="margin-top:12px">{{ t.distinctions }}</h2>
-    <ul class="timeline">{% for d in distinctions %}<li><span class="list-date">{{ d.annee }}</span><strong>{{ d.titre }}</strong><span class="list-meta">{{ d.detail }}</span></li>{% endfor %}</ul>
-  </div>
-</div></section>
+    <h1>{{ t.titre }}</h1>
+    {% for d in cvs %}<p class="center"><a class="pdf" href="{{ pre }}cv/{{ d.fichier }}" target="_blank" rel="noopener"><span aria-hidden="true">↓</span> {{ t.telecharger }}</a></p>{% endfor %}
+
+    <h2>{{ t.formation }}</h2>
+    {% for p in parcours %}
+    <div class="row"><div class="y">{{ p.annees }}</div><div class="what"><b>{{ p.titre }}</b>{{ p.lieu }}</div></div>
+    {% endfor %}
+
+    <h2>{{ t.experience }}</h2>
+    {% for e in experiences_academiques %}
+    <div class="row"><div class="y">{{ e.date }}</div><div class="what"><b>{{ e.titre }}</b>{{ e.lieu }}<span class="detail">{{ e.detail }}</span></div></div>
+    {% endfor %}
+
+    <h2>{{ t.distinctions }}</h2>
+    {% for d in distinctions %}
+    <div class="row"><div class="y">{{ d.annee }}</div><div class="what"><b>{% if d.url %}<a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.titre }}</a>{% else %}{{ d.titre }}{% endif %}</b>{{ d.detail }}</div></div>
+    {% endfor %}
 {% endblock %}

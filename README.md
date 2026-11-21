@@ -59,3 +59,34 @@ Le fichier `ressources/verification/google….html` valide le site dans Google S
 
 Tout ce qui se trouve dans `ressources/` (photo, CV PDF) est téléchargeable par tous les visiteurs
 une fois le site publié : n'y mettre ni téléphone ni adresse personnelle.
+
+## Design (novembre 2026)
+
+- **Mode jour uniquement**, sur une seule surface continue : aucune bordure ni bloc séparé entre les sections.
+- **Fond fixe** : crème doré (jaune) avec des reflets d'automne de Sherbrooke (érable, ocre, vert mousse).
+- **Couleurs** : orange-rouge et vert (inspirés de la palette d'Anthropic) pour les accents, bleus pour les liens
+  (variables en tête de `ressources/styles.css`).
+- **Animations** (`ressources/js/site.js`, comme sur le site de Yassine) : entrée en cascade du contenu,
+  apparition du portrait, trait sous le nom, trait du menu qui suit la souris, menu collant,
+  barre de lecture, copie du courriel en un clic.
+- L'ancien design est conservé dans `_sauvegarde_design_avant_refonte/`.
+
+## Pages générées (chacune est un fichier HTML séparé)
+
+Après `python3 build.py`, le dossier `site/` contient :
+`index.html`, `recherche.html`, `exposes.html`, `enseignement.html`, `cv.html`,
+et en anglais `en/index.html`, `en/research.html`, `en/talks.html`, `en/teaching.html`, `en/cv.html`,
+plus `sitemap.xml`, `robots.txt`, le fichier de validation Google, `styles.css`, `js/site.js`, `assets/`, `cv/`.
+
+## Google Search Console (apparaître dans Google)
+
+1. Ouvrir https://search.google.com/search-console et choisir la propriété
+   **Préfixe de l'URL** : `https://madjouadji.github.io/portfolio/`.
+2. Validation : le fichier `google0715c4e7b75eb266.html` (dans `ressources/verification/`) est publié
+   à la racine du site ; cliquer sur « Valider ».
+3. Menu **Sitemaps** → saisir `sitemap.xml` → **Envoyer**.
+   Adresse complète : `https://madjouadji.github.io/portfolio/sitemap.xml` (10 pages, FR + EN).
+4. Facultatif : **Inspection de l'URL** → coller l'adresse de l'accueil → « Demander l'indexation ».
+
+Remarque : comme le site est dans un sous-dossier (`/portfolio/`), Google ne lit pas son `robots.txt` ;
+c'est l'envoi du sitemap dans la Search Console (étape 3) qui compte.

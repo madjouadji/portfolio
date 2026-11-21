@@ -9,10 +9,13 @@
   <title>{{ titre_complet }}</title>
   <meta name="description" content="{{ description }}">
   <meta name="author" content="{{ nom }}">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#f7efd9">
   <link rel="canonical" href="{{ url_page }}">
   <link rel="alternate" hreflang="fr" href="{{ url_fr }}">
   <link rel="alternate" hreflang="en" href="{{ url_en }}">
   <link rel="alternate" hreflang="x-default" href="{{ url_fr }}">
+  <link rel="sitemap" type="application/xml" href="{{ url_site }}/sitemap.xml">
   <meta property="og:site_name" content="{{ nom }}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="{{ ui.og_locale }}">
@@ -39,39 +42,48 @@
   <link rel="icon" href="{{ pre }}assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
   <link rel="stylesheet" href="{{ pre }}styles.css">
 </head>
-<body class="{{ 'home' if page_active == 'accueil' else 'compact' }}">
-  <a class="skip" href="#contenu">{{ ui.skip }}</a>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="{{ liens.accueil }}">
-        <span class="brand-name">{{ nom }}</span>
-        <span class="brand-role">{{ ui.brand_role }}</span>
-      </a>
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="{{ ui.aria_menu }}">
-      <label for="menu-toggle" class="menu-button" aria-hidden="true"><span></span><span></span><span></span></label>
-      <nav class="nav" aria-label="{{ ui.aria_nav }}">
-        {% for cle in ["accueil", "recherche", "exposes", "enseignement", "cv"] %}
-        <a href="{{ liens[cle] }}"{% if page_active == cle %} aria-current="page"{% endif %}>{{ ui.nav[cle] }}</a>
-        {% endfor %}
-      </nav>
+<body data-page="{{ page_active }}">
+<a class="skip" href="#contenu">{{ ui.skip }}</a>
+<div class="readbar" aria-hidden="true"></div>
+<div class="wrapper">
+  <header class="top">
+    <div class="ctrl">
       <div class="langs" role="group" aria-label="{{ ui.aria_lang }}">
-        {% for code in ["fr", "en"] %}
+        {%- for code in ["fr", "en"] %}
         {% if code == lang %}<span aria-current="true" lang="{{ code }}">{{ code | upper }}</span>{% else %}<a href="{{ lien_autre_langue }}" lang="{{ code }}" hreflang="{{ code }}" title="{{ ui.autre_langue.nom }}" aria-label="{{ ui.autre_langue.aria }}">{{ code | upper }}</a>{% endif %}
-        {% endfor %}
+        {%- endfor %}
       </div>
     </div>
-  </header>
-  <main id="contenu">
-    {% block content %}{% endblock %}
-  </main>
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <span>© {{ annee }} {{ nom }} · Université de Sherbrooke</span>
-      <a href="mailto:{{ email }}">{{ email }}</a>
+    <div class="id">
+      {% if page_active == 'accueil' %}<h1 class="name"><a href="{{ liens.accueil }}">{{ nom }}</a></h1>{% else %}<p class="name"><a href="{{ liens.accueil }}">{{ nom }}</a></p>{% endif %}
+      <p class="role">{{ ui.job }} <span>·</span> {{ ui.departement }} <span>·</span> Université de Sherbrooke</p>
     </div>
+  </header>
+  <div class="sentinel" aria-hidden="true"></div>
+  <nav class="tabs" aria-label="{{ ui.aria_nav }}">
+    <div class="tabs-in">
+      <a class="mini" href="{{ liens.accueil }}" tabindex="-1">{{ prenom[0] }}. {{ nom_famille }}</a>
+      <div class="links">
+        {%- for cle in ["accueil", "recherche", "exposes", "enseignement", "cv"] %}
+        <a href="{{ liens[cle] }}"{% if page_active == cle %} aria-current="page"{% endif %}>{{ ui.nav[cle] }}</a>
+        {%- endfor %}
+        <span class="nav-mark" aria-hidden="true"></span>
+      </div>
+    </div>
+  </nav>
+
+  <main id="contenu" class="page">
+{% block content %}{% endblock %}
+  </main>
+
+  <footer class="pied">
+    <span>© {{ annee }} {{ nom }} · Université de Sherbrooke</span>
+    <a href="mailto:{{ email }}">{{ email }}</a>
   </footer>
+</div>
+<script src="{{ pre }}js/site.js" defer></script>
 </body>
 </html>

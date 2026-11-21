@@ -1,64 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 {% set t = ui.accueil %}
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-photo">
-      {% if portrait_disponible %}<img src="{{ pre }}assets/portrait.jpg" alt="{{ t.alt_portrait.format(nom=nom) }}" width="360" height="360">{% endif %}
-    </div>
-    <div class="hero-text">
-      <p class="kicker">{{ t.kicker }}</p>
-      <h1>{{ nom }}</h1>
-      <p class="lead">{{ presentation }}</p>
-      <ul class="facts">
-        <li><span>{{ t.institution }}</span>{{ t.institution_valeur }}</li>
-        <li><span>{{ t.direction }}</span>{{ t.direction_valeur }}</li>
-        <li><span>{{ t.domaines }}</span>{{ t.domaines_valeur }}</li>
-        <li><span>{{ t.courriel }}</span><a href="mailto:{{ email }}">{{ email }}</a></li>
-      </ul>
-      <div class="actions">
-        <a class="btn btn-primary" href="{{ liens.recherche }}">{{ t.bouton_recherche }}</a>
-        <a class="btn" href="{{ liens.cv }}">{{ t.bouton_cv }}</a>
-      </div>
-    </div>
-  </div>
-</section>
+    {% if portrait_disponible %}<div class="portrait"><img src="{{ pre }}assets/portrait.jpg" alt="{{ t.alt_portrait.format(nom=nom) }}" width="320" height="320"></div>{% endif %}
+    <h3>Introduction</h3>
+    <p>{{ presentation }}</p>
+    <dl class="facts">
+      <div><dt>{{ t.institution }}</dt><dd><a href="https://www.usherbrooke.ca/mathematiques/" target="_blank" rel="noopener">{{ t.institution_valeur }}</a></dd></div>
+      <div><dt>{{ t.direction }}</dt><dd><a class="person" href="https://maxencemayrand.github.io/" target="_blank" rel="noopener">{{ t.direction_valeur }}</a></dd></div>
+      <div><dt>{{ t.domaines }}</dt><dd>{{ t.domaines_valeur }}</dd></div>
+      <div><dt>{{ t.courriel }}</dt><dd><button class="copy" id="copy-email" type="button" title="{{ ui.copier }}" data-ok="{{ ui.copie_ok }}" data-sel="{{ ui.copie_selection }}">{{ email }}<span class="copied" aria-live="polite"></span></button></dd></div>
+    </dl>
 
-<section class="section">
-  <div class="wrap">
-    <h2 class="section-title">{{ t.themes }}</h2>
-    <div class="cards three">
+    <h2>{{ t.themes }}</h2>
+    <div class="axes">
       {% for axe in recherches %}
-      <article class="card">
-        <span class="card-symbol" aria-hidden="true">{{ axe.symbole }}</span>
-        <h3>{{ axe.titre }}</h3>
-        <p>{{ axe.description }}</p>
-      </article>
+      <div class="axe"><span class="sym" aria-hidden="true">{{ axe.symbole }}</span><div><b>{{ axe.titre }}</b>{{ axe.description }}</div></div>
       {% endfor %}
     </div>
-  </div>
-</section>
 
-<section class="section alt">
-  <div class="wrap two-col">
-    <div>
-      <h2 class="section-title">{{ t.exposes_recents }}</h2>
-      <ul class="list">
-        {% for e in exposes[:3] %}
-        <li><span class="list-date">{{ e.date }}</span><strong>{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.titre }}</a>{% else %}{{ e.titre }}{% endif %}</strong><span class="list-meta">{{ e.contexte }}</span></li>
-        {% endfor %}
-      </ul>
-      <a class="more" href="{{ liens.exposes }}">{{ t.tous_exposes }}</a>
-    </div>
-    <div>
-      <h2 class="section-title">{{ t.distinctions }}</h2>
-      <ul class="list">
-        {% for d in distinctions %}
-        <li><span class="list-date">{{ d.annee }}</span><strong>{{ d.titre }}</strong><span class="list-meta">{{ d.detail }}</span></li>
-        {% endfor %}
-      </ul>
-      <a class="more" href="{{ liens.cv }}">{{ t.parcours_complet }}</a>
-    </div>
-  </div>
-</section>
+    <h2>{{ t.exposes_recents }}</h2>
+    {% for e in exposes[:3] %}
+    <div class="row"><div class="y">{{ e.date }}</div><div class="what"><b>{% if e.url %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.titre }}</a>{% else %}{{ e.titre }}{% endif %}</b>{{ e.contexte }}</div></div>
+    {% endfor %}
+    <p class="more"><a href="{{ liens.exposes }}">{{ t.tous_exposes }}</a></p>
+
+    <h2>{{ t.distinctions }}</h2>
+    {% for d in distinctions %}
+    <div class="row"><div class="y">{{ d.annee }}</div><div class="what"><b>{% if d.url %}<a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.titre }}</a>{% else %}{{ d.titre }}{% endif %}</b>{{ d.detail }}</div></div>
+    {% endfor %}
+    <p class="more"><a href="{{ liens.cv }}">{{ t.parcours_complet }}</a></p>
 {% endblock %}

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 {% set t = ui.enseignement %}
-<section class="page-head"><div class="wrap"><p class="kicker">{{ t.kicker }}</p><h1>{{ t.h1 }}</h1><p class="sub">{{ t.sous_titre }}</p></div></section>
-<section class="section"><div class="wrap">
-  <ul class="courses">
+    <h1>{{ t.titre }}</h1>
+
+    <h2>{{ ui.auxiliariats }}</h2>
+    <p class="sub">{{ t.sous_titre }}</p>
     {% for c in auxiliariats %}
-    <li><span class="code">{{ c.code }}</span><span class="ctitle">{{ c.titre }}</span><span class="term">{{ c.session }}</span></li>
+    <div class="row"><div class="y">{{ c.session }}</div><div class="what"><b><span class="code">{{ c.code }}</span>{{ c.titre }}</b></div></div>
     {% endfor %}
-  </ul>
-  <p class="note">{{ t.note }}</p>
-</div></section>
+
+    <h2>{{ ui.secondaire }}</h2>
+    <div class="row"><div class="y">2019–2022</div><div class="what"><b>Togo</b>{{ enseignement_secondaire }}</div></div>
 {% endblock %}

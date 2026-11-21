@@ -149,3 +149,21 @@ UI = {
         },
     },
 }
+
+# Textes du nouveau design : en-tête, copie du courriel, titres de sections.
+UI["fr"].update({
+    "departement": "Département de mathématiques",
+    "copie_ok": "Copié ✓",
+    "copie_selection": "Sélectionné",
+    "copier": "Cliquer pour copier l'adresse",
+    "auxiliariats": "Auxiliariats d'enseignement",
+    "secondaire": "Enseignement au secondaire",
+})
+UI["en"].update({
+    "departement": "Department of Mathematics",
+    "copie_ok": "Copied ✓",
+    "copie_selection": "Selected",
+    "copier": "Click to copy the address",
+    "auxiliariats": "Teaching assistantships",
+    "secondaire": "Secondary school teaching",
+})

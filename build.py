@@ -117,6 +117,7 @@ def construire_site():
             (dossier / (fr if lang == "fr" else en)).write_text(html, encoding="utf-8")
 
     copy2(RACINE / "ressources" / "styles.css", DESTINATION / "styles.css")
+    copytree(RACINE / "ressources" / "js", DESTINATION / "js", dirs_exist_ok=True)
     copytree(RACINE / "ressources" / "assets", DESTINATION / "assets", dirs_exist_ok=True)
     copytree(RACINE / "ressources" / "cv", DESTINATION / "cv", dirs_exist_ok=True)
     # Fichiers de validation (Google Search Console) : copiés à la racine du site, à ne jamais supprimer.
